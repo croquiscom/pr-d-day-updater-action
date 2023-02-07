@@ -66,7 +66,7 @@ export async function dDayUpdate(
     for (const pr of pullRequests) {
       const prCreateAt = dayjs(pr.created_at).tz()
       if (now.get('D') === prCreateAt.get('D')) {
-        return
+        break
       }
 
       const otherLabels = pr.labels
@@ -76,7 +76,7 @@ export async function dDayUpdate(
       const curDdayLabel = getCurDDayLabel(pr.labels)
       const nextDdayLabel = getNextDDayLabel(pr.labels)
       if (!nextDdayLabel) {
-        return
+        break
       }
 
       console.log(

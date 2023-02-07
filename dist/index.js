@@ -69,7 +69,7 @@ function dDayUpdate(github_token, github_repository) {
             for (const pr of pullRequests) {
                 const prCreateAt = (0, dayjs_1.default)(pr.created_at).tz();
                 if (now.get('D') === prCreateAt.get('D')) {
-                    return;
+                    break;
                 }
                 const otherLabels = pr.labels
                     .filter(label => label.name.includes('D-'))
@@ -77,7 +77,7 @@ function dDayUpdate(github_token, github_repository) {
                 const curDdayLabel = getCurDDayLabel(pr.labels);
                 const nextDdayLabel = getNextDDayLabel(pr.labels);
                 if (!nextDdayLabel) {
-                    return;
+                    break;
                 }
                 console.log(`update [${pr.number}]${pr.title} : ${curDdayLabel} => ${nextDdayLabel}`);
                 try {
