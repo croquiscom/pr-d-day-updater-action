@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import timezone from 'dayjs/plugin/timezone'
 import utc from 'dayjs/plugin/utc'
 import {isHoliday} from 'korean-business-day'
-import github from '@actions/github'
+import {getOctokit} from '@actions/github'
 import {Endpoints} from '@octokit/types'
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -48,7 +48,7 @@ export async function dDayUpdate(
     return
   }
   dayjs.tz.setDefault('Asia/Seoul')
-  const octokit = github.getOctokit(github_token)
+  const octokit = getOctokit(github_token)
   const [owner, repo] = github_repository.split('/')
 
   const {data: pullRequests}: PullRequestsResponseType =
