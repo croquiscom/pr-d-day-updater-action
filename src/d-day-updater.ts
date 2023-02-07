@@ -75,7 +75,7 @@ export async function dDayUpdate(
 
       const curDdayLabel = getCurDDayLabel(pr.labels)
       const nextDdayLabel = getNextDDayLabel(pr.labels)
-      if (!nextDdayLabel) {
+      if (curDdayLabel === 'D-0' || !nextDdayLabel) {
         continue
       }
 

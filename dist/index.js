@@ -76,7 +76,7 @@ function dDayUpdate(github_token, github_repository) {
                     .map(label => label.name);
                 const curDdayLabel = getCurDDayLabel(pr.labels);
                 const nextDdayLabel = getNextDDayLabel(pr.labels);
-                if (!nextDdayLabel) {
+                if (curDdayLabel === 'D-0' || !nextDdayLabel) {
                     continue;
                 }
                 console.log(`update [${pr.number}]${pr.title} : ${curDdayLabel} => ${nextDdayLabel}`);
