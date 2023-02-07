@@ -1,16 +1,17 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import {dDayUpdate} from './d-day-updater'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+    const {GITHUB_TOKEN, GITHUB_REPOSITORY} = process.env
+    if (!GITHUB_TOKEN) {
+      throw new Error('GITHUB_TOKEN is required')
+    }
+    if (!GITHUB_REPOSITORY) {
+      throw new Error('GITHUB_REPOSITORY is required')
+    }
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    await dDayUpdate(GITHUB_TOKEN, GITHUB_REPOSITORY)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
