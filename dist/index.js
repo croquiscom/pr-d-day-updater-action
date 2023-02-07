@@ -24,7 +24,7 @@ const dayjs_1 = __importDefault(__nccwpck_require__(7401));
 const timezone_1 = __importDefault(__nccwpck_require__(4761));
 const utc_1 = __importDefault(__nccwpck_require__(4359));
 const korean_business_day_1 = __nccwpck_require__(9123);
-const github_1 = __importDefault(__nccwpck_require__(5438));
+const github_1 = __nccwpck_require__(5438);
 dayjs_1.default.extend(utc_1.default);
 dayjs_1.default.extend(timezone_1.default);
 const PREFIX_D_DAY_LABEL = 'D-';
@@ -54,7 +54,7 @@ function dDayUpdate(github_token, github_repository) {
             return;
         }
         dayjs_1.default.tz.setDefault('Asia/Seoul');
-        const octokit = github_1.default.getOctokit(github_token);
+        const octokit = (0, github_1.getOctokit)(github_token);
         const [owner, repo] = github_repository.split('/');
         const { data: pullRequests } = yield octokit.rest.pulls.list({
             owner,
