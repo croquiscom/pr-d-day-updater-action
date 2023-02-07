@@ -70,7 +70,7 @@ export async function dDayUpdate(
       }
 
       const otherLabels = pr.labels
-        .filter(label => label.name.includes('D-'))
+        .filter(label => !label.name.includes('D-'))
         .map(label => label.name)
 
       const curDdayLabel = getCurDDayLabel(pr.labels)

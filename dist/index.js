@@ -72,7 +72,7 @@ function dDayUpdate(github_token, github_repository) {
                     continue;
                 }
                 const otherLabels = pr.labels
-                    .filter(label => label.name.includes('D-'))
+                    .filter(label => !label.name.includes('D-'))
                     .map(label => label.name);
                 const curDdayLabel = getCurDDayLabel(pr.labels);
                 const nextDdayLabel = getNextDDayLabel(pr.labels);
