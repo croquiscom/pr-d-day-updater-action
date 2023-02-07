@@ -21,7 +21,4 @@ ex)
 ```yaml
 - name: pr d-day updater
   uses: croquiscom/pr-d-day-updater-action@v1
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
 ```
