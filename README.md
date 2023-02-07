@@ -20,5 +20,5 @@ ex)
 
 ```yaml
 - name: pr d-day updater
-  uses: croquiscom/pr-d-day-updater-action@v1
+  uses: croquiscom/pr-d-day-updater-action@v1.0.0
 ```
